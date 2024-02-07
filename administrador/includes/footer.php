@@ -34,6 +34,7 @@
     <script src="js/functions-materias.js"></script>
     <script src="js/functions-grupos.js"></script>
     <script src="js/functions-grupos-relacion.js"></script>
+    <script src="js/functions-menciones.js"></script>
     <script src="js/functions-periodos.js"></script>
     <script src="js/functions-profesor-materia.js"></script>
     <script src="js/functions-primer-año.js"></script>
