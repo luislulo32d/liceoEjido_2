@@ -42,13 +42,17 @@
 
           <li><a class="app-menu__item" href="lista_profesores.php"><i class="app-menu__icon fa fa-male"></i><span class="app-menu__label">Profesores</span></a></li>
 
-          <li><a class="app-menu__item" href="lista_materias.php"><i class="app-menu__icon fa fa-book"></i><span class="app-menu__label">Materias</span></a></li>
+          <li><a class="app-menu__item" href="lista_materias.php"><i class="app-menu__icon fa fa-book"></i><span class="app-menu__label">Materias Obligatorias*</span></a></li>
+          
+          <li><a class="app-menu__item" href="lista_materias_tecnicas.php"><i class="app-menu__icon fa fa-book"></i><span class="app-menu__label">Materias Técnicas*</span></a></li>
 
           <li><a class="app-menu__item" href="lista_profesor_materia.php"><i class="app-menu__icon fa fa-graduation-cap"></i><span class="app-menu__label">Profesor Materias</span></a></li>
 
           <li><a class="app-menu__item" href="lista_aulas.php"><i class="app-menu__icon fa fa-folder-open"></i><span class="app-menu__label">Secciones</span></a></li>
 
           <li><a class="app-menu__item" href="lista_grupos.php"><i class="app-menu__icon fa fa-users"></i><span class="app-menu__label">Grupos</span></a></li>
+         
+          <li><a class="app-menu__item" href="lista_menciones.php"><i class="app-menu__icon fa fa-users"></i><span class="app-menu__label">Menciones</span></a></li>
 
           <li><a class="app-menu__item" href="lista_periodos.php"><i class="app-menu__icon fa fa-calendar"></i><span class="app-menu__label">Periodos</span></a></li>
           </ul>
