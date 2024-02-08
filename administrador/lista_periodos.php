@@ -6,7 +6,7 @@
 <main class="app-content">
       <div class="app-title">
         <div>
-            <h1><i class="fa fa-dashboard"></i> Lista de Periodos (Se recomienda tener solo un periodo activo para evitar problemas a la hora de generar boletines, generar resumenes o registrar estudiantes)</h1>
+            <h1><i class="fa fa-dashboard"></i> Lista de Periodos</h1>
             <button class="btn btn-success" type="button" onclick="openModalPeriodo()">Nuevo Periodo</button>
         </div>
         <ul class="app-breadcrumb breadcrumb">

@@ -32,6 +32,7 @@
     <script src="js/functions-alumnos.js"></script>
     <script src="js/functions-aulas.js"></script>
     <script src="js/functions-materias.js"></script>
+    <script src="js/functions-materias-tecnicas.js"></script>
     <script src="js/functions-grupos.js"></script>
     <script src="js/functions-grupos-relacion.js"></script>
     <script src="js/functions-menciones.js"></script>

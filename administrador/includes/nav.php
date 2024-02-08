@@ -42,9 +42,9 @@
 
           <li><a class="app-menu__item" href="lista_profesores.php"><i class="app-menu__icon fa fa-male"></i><span class="app-menu__label">Profesores</span></a></li>
 
-          <li><a class="app-menu__item" href="lista_materias.php"><i class="app-menu__icon fa fa-book"></i><span class="app-menu__label">Materias Obligatorias*</span></a></li>
+          <li><a class="app-menu__item" href="lista_materias.php"><i class="app-menu__icon fa fa-book"></i><span class="app-menu__label">Materias Obligatorias</span></a></li>
           
-          <li><a class="app-menu__item" href="lista_materias_tecnicas.php"><i class="app-menu__icon fa fa-book"></i><span class="app-menu__label">Materias Técnicas*</span></a></li>
+          <li><a class="app-menu__item" href="seleccion_materias_tecnicas.php"><i class="app-menu__icon fa fa-book"></i><span class="app-menu__label">Materias Técnicas*</span></a></li>
 
           <li><a class="app-menu__item" href="lista_profesor_materia.php"><i class="app-menu__icon fa fa-graduation-cap"></i><span class="app-menu__label">Profesor Materias</span></a></li>
 

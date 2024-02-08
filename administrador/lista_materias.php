@@ -6,7 +6,7 @@
 <main class="app-content">
       <div class="app-title">
         <div>
-            <h1><i class="fa fa-dashboard"></i> Lista de Materias (Recuerde registrar las materias en el orden correcto.)</h1>
+            <h1><i class="fa fa-dashboard"></i> Lista de Materias</h1>
             <button class="btn btn-success" type="button" onclick="openModalMateria()">Nueva Materia</button>
         </div>
         <ul class="app-breadcrumb breadcrumb">

@@ -2,7 +2,7 @@
 
 require_once '../../../includes/conexion.php';
 
-$sql = "SELECT * FROM materias WHERE estado != 0 ORDER BY año_seleccion,materia_id,nombre_materia";
+$sql = "SELECT * FROM materias as mt INNER JOIN menciones as me ON mt.mencion_id = me.mencion_id WHERE mt.estado != 0 AND mt.mencion_id = 1 ORDER BY mt.año_seleccion,mt.materia_id,mt.nombre_materia";
 $query = $pdo->prepare($sql);
 $query->execute();
 
