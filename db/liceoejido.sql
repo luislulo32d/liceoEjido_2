@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-01-2024 a las 21:11:30
--- Versión del servidor: 10.4.28-MariaDB
--- Versión de PHP: 8.0.28
+-- Tiempo de generación: 10-02-2024 a las 19:22:50
+-- Versión del servidor: 10.4.32-MariaDB
+-- Versión de PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -101,16 +101,18 @@ CREATE TABLE `cuarto_año` (
   `periodo_id` int(11) NOT NULL,
   `numero_lista` int(2) NOT NULL DEFAULT 0,
   `statuscr` int(11) NOT NULL DEFAULT 1,
-  `grupo_id` int(11) DEFAULT 1
+  `grupo_id` int(11) DEFAULT 1,
+  `mencion_id` int(11) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `cuarto_año`
 --
 
-INSERT INTO `cuarto_año` (`cuarto_id`, `alumno_id`, `aula_id`, `periodo_id`, `numero_lista`, `statuscr`, `grupo_id`) VALUES
-(1, 3, 1, 1, 1, 2, 2),
-(2, 14, 1, 4, 1, 3, 1);
+INSERT INTO `cuarto_año` (`cuarto_id`, `alumno_id`, `aula_id`, `periodo_id`, `numero_lista`, `statuscr`, `grupo_id`, `mencion_id`) VALUES
+(1, 3, 1, 1, 1, 2, 2, 1),
+(2, 14, 1, 4, 1, 3, 1, 1),
+(3, 5, 1, 1, 0, 2, 1, 4);
 
 -- --------------------------------------------------------
 
@@ -199,66 +201,92 @@ CREATE TABLE `materias` (
   `nombre_materia` varchar(50) NOT NULL,
   `siglas` text NOT NULL,
   `año_seleccion` int(1) DEFAULT 1,
-  `estado` int(11) NOT NULL DEFAULT 1
+  `estado` int(11) NOT NULL DEFAULT 1,
+  `mencion_id` int(11) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `materias`
 --
 
-INSERT INTO `materias` (`materia_id`, `nombre_materia`, `siglas`, `año_seleccion`, `estado`) VALUES
-(1, 'CASTELLANO', 'CA', 1, 1),
-(2, 'INGLES Y OTRAS LENGUAS EXTRANJERAS', 'ILE', 1, 1),
-(3, 'MATEMÁTICAS', 'MA', 1, 1),
-(4, 'PARTICIPACION EN GRUPOS', 'GP', 1, 0),
-(5, 'ORIENTACION Y CONVIVENCIA', 'OYC', 1, 0),
-(6, 'EDUCACION FISICA', 'EF', 1, 1),
-(7, 'ARTE Y PATRIMONIO', 'AP', 1, 1),
-(8, 'CIENCIAS NATURALES', 'CN', 1, 1),
-(9, 'GEOGRAFÍA, HISTORIA Y CIUDADANÍA', 'GHC', 1, 1),
-(10, 'CASTELLANO', 'CA', 2, 1),
-(11, 'INGLÉS Y OTRAS LENGUAS EXTRANJERAS', 'ILE', 2, 1),
-(12, 'MATEMÁTICAS', 'MA', 2, 1),
-(13, 'EDUCACIÓN FÍSICA', 'EF', 2, 1),
-(14, 'ARTE Y PATRIMONIO', 'AP', 2, 1),
-(15, 'CIENCIAS NATURALES', 'CN', 2, 1),
-(16, 'GEOGRAFÍA, HISTORIA Y CIUDADANÍA', 'GHC', 2, 1),
-(17, 'CASTELLANO', 'CA', 3, 1),
-(18, 'INGLÉS Y OTRAS LENGUAS EXTRANJERAS', 'ILE', 3, 1),
-(19, 'MATEMÁTICAS', 'MA', 3, 1),
-(20, 'EDUCACIÓN FÍSICA', 'EF', 3, 1),
-(21, 'FÍSICA', 'FI', 3, 1),
-(22, 'QUÍMICA', 'QM', 3, 1),
-(23, 'BIOLOGÍA', 'BI', 3, 1),
-(24, 'ORIENTACIÓN Y CONVIVENCIA', 'OYC', 1, 0),
-(25, 'ORIENTACIÓN Y CONVIVENCIA', 'OYC', 1, 1),
-(26, 'PARTICIPACION EN GRUPOS', 'GP', 1, 1),
-(27, 'GEOGRAFÍA, HISTORIA Y CIUDADANÍA', 'GHC', 3, 1),
-(28, 'CASTELLANO', 'CA', 4, 1),
-(29, 'INGLÉS Y OTRAS LENGUAS EXTRANJERAS', 'ILE', 4, 1),
-(30, 'MATEMÁTICAS', 'MA', 4, 1),
-(31, 'EDUCACIÓN FÍSICA', 'EF', 4, 1),
-(32, 'FÍSICA', 'FI', 4, 1),
-(33, 'QUÍMICA', 'QM', 4, 1),
-(34, 'BIOLOGÍA', 'BI', 1, 0),
-(35, 'BIOLOGÍA', 'BI', 4, 1),
-(36, 'GEOGRAFÍA, HISTORIA Y CIUDADANÍA', 'GHC', 4, 1),
-(37, 'FORMACIÓN PARA LA SOBERANÍA NACIONAL', 'FSN', 4, 1),
-(38, 'CASTELLANO', 'CA', 5, 1),
-(39, 'INGLÉS Y OTRAS LENGUAS EXTRANJERAS', 'ILE', 5, 1),
-(40, 'MATEMÁTICAS', 'MA', 5, 1),
-(41, 'EDUCACIÓN FÍSICA', 'EF', 5, 1),
-(42, 'FÍSICA', 'FI', 5, 1),
-(43, 'QUÍMICA', 'QM', 5, 1),
-(44, 'FORMACIÓN PARA LA SOBERANÍA NACIONAL', 'FSN', 5, 1),
-(45, 'ORIENTACIÓN Y CONVIVENCIA', 'OYC', 2, 1),
-(46, 'GRUPOS DE PARTICIPACIÓN', 'GP', 2, 1),
-(47, 'ORIENTACIÓN Y CONVIVENCIA', 'OYC', 3, 1),
-(48, 'ORIENTACIÓN Y CONVIVENCIA', 'OYC', 4, 1),
-(49, 'ORIENTACIÓN Y CONVIVENCIA', 'OYC', 5, 1),
-(50, 'GRUPOS DE PARTICIPACIÓN', 'GP', 3, 1),
-(51, 'GRUPOS DE PARTICIPACIÓN', 'GP', 4, 1),
-(52, 'GRUPOS DE PARTICIPACIÓN', 'GP', 5, 1);
+INSERT INTO `materias` (`materia_id`, `nombre_materia`, `siglas`, `año_seleccion`, `estado`, `mencion_id`) VALUES
+(1, 'CASTELLANO', 'CA', 1, 1, 1),
+(2, 'INGLES Y OTRAS LENGUAS EXTRANJERAS', 'ILE', 1, 1, 1),
+(3, 'MATEMÁTICAS', 'MA', 1, 1, 1),
+(4, 'PARTICIPACION EN GRUPOS', 'GP', 1, 0, 1),
+(5, 'ORIENTACION Y CONVIVENCIA', 'OYC', 1, 0, 1),
+(6, 'EDUCACION FISICA', 'EF', 1, 1, 1),
+(7, 'ARTE Y PATRIMONIO', 'AP', 1, 1, 1),
+(8, 'CIENCIAS NATURALES', 'CN', 1, 1, 1),
+(9, 'GEOGRAFÍA, HISTORIA Y CIUDADANÍA', 'GHC', 1, 1, 1),
+(10, 'CASTELLANO', 'CA', 2, 1, 1),
+(11, 'INGLÉS Y OTRAS LENGUAS EXTRANJERAS', 'ILE', 2, 1, 1),
+(12, 'MATEMÁTICAS', 'MA', 2, 1, 1),
+(13, 'EDUCACIÓN FÍSICA', 'EF', 2, 1, 1),
+(14, 'ARTE Y PATRIMONIO', 'AP', 2, 1, 1),
+(15, 'CIENCIAS NATURALES', 'CN', 2, 1, 1),
+(16, 'GEOGRAFÍA, HISTORIA Y CIUDADANÍA', 'GHC', 2, 1, 1),
+(17, 'CASTELLANO', 'CA', 3, 1, 1),
+(18, 'INGLÉS Y OTRAS LENGUAS EXTRANJERAS', 'ILE', 3, 1, 1),
+(19, 'MATEMÁTICAS', 'MA', 3, 1, 1),
+(20, 'EDUCACIÓN FÍSICA', 'EF', 3, 1, 1),
+(21, 'FÍSICA', 'FI', 3, 1, 1),
+(22, 'QUÍMICA', 'QM', 3, 1, 1),
+(23, 'BIOLOGÍA', 'BI', 3, 1, 1),
+(24, 'ORIENTACIÓN Y CONVIVENCIA', 'OYC', 1, 0, 1),
+(25, 'ORIENTACIÓN Y CONVIVENCIA', 'OYC', 1, 1, 1),
+(26, 'PARTICIPACION EN GRUPOS', 'GP', 1, 1, 1),
+(27, 'GEOGRAFÍA, HISTORIA Y CIUDADANÍA', 'GHC', 3, 1, 1),
+(28, 'CASTELLANO', 'CA', 4, 1, 1),
+(29, 'INGLÉS Y OTRAS LENGUAS EXTRANJERAS', 'ILE', 4, 1, 1),
+(30, 'MATEMÁTICAS', 'MA', 4, 1, 1),
+(31, 'EDUCACIÓN FÍSICA', 'EF', 4, 1, 1),
+(32, 'FÍSICA', 'FI', 4, 1, 1),
+(33, 'QUÍMICA', 'QM', 4, 1, 1),
+(34, 'BIOLOGÍA', 'BI', 1, 0, 1),
+(35, 'BIOLOGÍA', 'BI', 4, 1, 1),
+(36, 'GEOGRAFÍA, HISTORIA Y CIUDADANÍA', 'GHC', 4, 1, 1),
+(37, 'FORMACIÓN PARA LA SOBERANÍA NACIONAL', 'FSN', 4, 1, 1),
+(38, 'CASTELLANO', 'CA', 5, 1, 1),
+(39, 'INGLÉS Y OTRAS LENGUAS EXTRANJERAS', 'ILE', 5, 1, 1),
+(40, 'MATEMÁTICAS', 'MA', 5, 1, 1),
+(41, 'EDUCACIÓN FÍSICA', 'EF', 5, 1, 1),
+(42, 'FÍSICA', 'FI', 5, 1, 1),
+(43, 'QUÍMICA', 'QM', 5, 1, 1),
+(44, 'FORMACIÓN PARA LA SOBERANÍA NACIONAL', 'FSN', 5, 1, 1),
+(45, 'ORIENTACIÓN Y CONVIVENCIA', 'OYC', 2, 1, 1),
+(46, 'GRUPOS DE PARTICIPACIÓN', 'GP', 2, 1, 1),
+(47, 'ORIENTACIÓN Y CONVIVENCIA', 'OYC', 3, 1, 1),
+(48, 'ORIENTACIÓN Y CONVIVENCIA', 'OYC', 4, 1, 1),
+(49, 'ORIENTACIÓN Y CONVIVENCIA', 'OYC', 5, 1, 1),
+(50, 'GRUPOS DE PARTICIPACIÓN', 'GP', 3, 1, 1),
+(51, 'GRUPOS DE PARTICIPACIÓN', 'GP', 4, 1, 1),
+(52, 'GRUPOS DE PARTICIPACIÓN', 'GP', 5, 1, 1),
+(53, 'PRE HOSPITALARIA', 'PH', 1, 1, 3),
+(54, 'ORTETRICIA', 'ORT', 1, 1, 3),
+(55, 'FARMASEUTICA', 'FA', 1, 1, 3);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `menciones`
+--
+
+CREATE TABLE `menciones` (
+  `mencion_id` int(11) NOT NULL,
+  `mencion_nombre` varchar(50) DEFAULT NULL,
+  `mencion_estado` int(2) NOT NULL DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `menciones`
+--
+
+INSERT INTO `menciones` (`mencion_id`, `mencion_nombre`, `mencion_estado`) VALUES
+(1, 'OBLIGATORIA', 1),
+(2, 'ENFERMERÍA', 0),
+(3, 'ENFERMERÍA', 1),
+(4, 'INFORMÁTICA ', 1);
 
 -- --------------------------------------------------------
 
@@ -285,7 +313,7 @@ CREATE TABLE `notas` (
 --
 
 INSERT INTO `notas` (`nota_id`, `alumno_id`, `materia_id`, `nota1`, `nota2`, `nota3`, `periodo_id`, `promedio`, `curso`, `estadonota`, `momento_nota`) VALUES
-(1, 3, 1, 4, 3, 4, 1, 4, 1, 4, 1),
+(1, 3, 1, 4, 3, 4, 1, 4, 1, 2, 1),
 (2, 3, 2, 5, 4, 5, 1, 5, 1, 2, 1),
 (3, 3, 3, 16, 12, 13, 1, 14, 1, 2, 1),
 (4, 3, 4, 13, 18, 16, 1, 16, 1, 2, 1),
@@ -391,21 +419,22 @@ CREATE TABLE `primer_año` (
   `periodo_id` int(11) NOT NULL,
   `numero_lista` int(2) NOT NULL DEFAULT 0,
   `statuspr` int(11) NOT NULL DEFAULT 1,
-  `grupo_id` int(11) NOT NULL DEFAULT 1
+  `grupo_id` int(11) NOT NULL DEFAULT 1,
+  `mencion_id` int(11) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `primer_año`
 --
 
-INSERT INTO `primer_año` (`primero_id`, `alumno_id`, `aula_id`, `periodo_id`, `numero_lista`, `statuspr`, `grupo_id`) VALUES
-(1, 3, 1, 1, 1, 2, 3),
-(2, 4, 1, 1, 2, 1, 2),
-(3, 5, 1, 1, 3, 1, 1),
-(4, 6, 1, 1, 4, 1, 1),
-(5, 7, 2, 1, 1, 1, 2),
-(6, 11, 1, 1, 10, 1, 5),
-(7, 14, 1, 1, 11, 1, 2);
+INSERT INTO `primer_año` (`primero_id`, `alumno_id`, `aula_id`, `periodo_id`, `numero_lista`, `statuspr`, `grupo_id`, `mencion_id`) VALUES
+(2, 4, 1, 1, 2, 1, 2, 1),
+(3, 5, 1, 1, 3, 1, 1, 1),
+(4, 6, 1, 1, 4, 1, 1, 1),
+(5, 7, 2, 1, 1, 1, 2, 1),
+(6, 11, 1, 1, 10, 1, 5, 1),
+(7, 14, 1, 1, 11, 1, 2, 1),
+(8, 3, 1, 1, 0, 1, 2, 3);
 
 -- --------------------------------------------------------
 
@@ -473,17 +502,19 @@ CREATE TABLE `quinto_año` (
   `periodo_id` int(11) NOT NULL,
   `numero_lista` int(2) NOT NULL DEFAULT 0,
   `statusqn` int(11) NOT NULL DEFAULT 1,
-  `grupo_id` int(11) NOT NULL DEFAULT 1
+  `grupo_id` int(11) NOT NULL DEFAULT 1,
+  `mencion_id` int(11) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `quinto_año`
 --
 
-INSERT INTO `quinto_año` (`quinto_id`, `alumno_id`, `aula_id`, `periodo_id`, `numero_lista`, `statusqn`, `grupo_id`) VALUES
-(1, 4, 1, 1, 1, 1, 4),
-(2, 6, 1, 1, 2, 1, 3),
-(3, 14, 1, 6, 1, 1, 2);
+INSERT INTO `quinto_año` (`quinto_id`, `alumno_id`, `aula_id`, `periodo_id`, `numero_lista`, `statusqn`, `grupo_id`, `mencion_id`) VALUES
+(1, 4, 1, 1, 1, 1, 4, 1),
+(2, 6, 1, 1, 2, 1, 3, 1),
+(3, 14, 1, 6, 1, 1, 2, 1),
+(4, 7, 1, 1, 0, 1, 2, 4);
 
 -- --------------------------------------------------------
 
@@ -529,17 +560,19 @@ CREATE TABLE `segundo_año` (
   `periodo_id` int(11) NOT NULL,
   `numero_lista` int(2) NOT NULL DEFAULT 0,
   `statussg` int(11) NOT NULL DEFAULT 1,
-  `grupo_id` int(11) NOT NULL DEFAULT 1
+  `grupo_id` int(11) NOT NULL DEFAULT 1,
+  `mencion_id` int(11) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `segundo_año`
 --
 
-INSERT INTO `segundo_año` (`segundo_id`, `alumno_id`, `aula_id`, `periodo_id`, `numero_lista`, `statussg`, `grupo_id`) VALUES
-(1, 5, 1, 1, 1, 1, 3),
-(2, 3, 1, 1, 6, 3, 5),
-(3, 14, 1, 2, 1, 1, 5);
+INSERT INTO `segundo_año` (`segundo_id`, `alumno_id`, `aula_id`, `periodo_id`, `numero_lista`, `statussg`, `grupo_id`, `mencion_id`) VALUES
+(1, 5, 1, 1, 1, 1, 3, 1),
+(2, 3, 1, 1, 6, 3, 5, 1),
+(3, 14, 1, 2, 1, 1, 5, 1),
+(4, 12, 1, 1, 0, 1, 2, 4);
 
 -- --------------------------------------------------------
 
@@ -554,16 +587,18 @@ CREATE TABLE `tercer_año` (
   `periodo_id` int(11) NOT NULL,
   `numero_lista` int(2) NOT NULL DEFAULT 0,
   `statustr` int(11) NOT NULL DEFAULT 1,
-  `grupo_id` int(11) DEFAULT 1
+  `grupo_id` int(11) DEFAULT 1,
+  `mencion_id` int(11) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `tercer_año`
 --
 
-INSERT INTO `tercer_año` (`tercer_id`, `alumno_id`, `aula_id`, `periodo_id`, `numero_lista`, `statustr`, `grupo_id`) VALUES
-(1, 3, 1, 1, 1, 1, 4),
-(2, 14, 1, 5, 1, 1, 2);
+INSERT INTO `tercer_año` (`tercer_id`, `alumno_id`, `aula_id`, `periodo_id`, `numero_lista`, `statustr`, `grupo_id`, `mencion_id`) VALUES
+(1, 3, 1, 1, 1, 1, 4, 3),
+(2, 14, 1, 5, 1, 1, 2, 1),
+(3, 5, 1, 1, 0, 1, 2, 3);
 
 -- --------------------------------------------------------
 
@@ -589,7 +624,8 @@ INSERT INTO `usuarios` (`usuario_id`, `nombre`, `usuario`, `clave`, `rol`, `esta
 (15, 'PEPE', 'pepe', '$2y$10$YceSIbjJg9ZX8ehRyX/nCuuJCquCPZM4M8oF6imck0NCd1eNl10K6', 1, 1),
 (16, 'JORGE', 'jorji22', '$2y$10$YlwAgxyXSHjU31.i/tCXGu/9sn1fhWopnZJ4YqzLzkMMqMci7Zeem', 1, 2),
 (17, 'DIRECTOR', 'maxiAdmin', '$2y$10$c1zyE75EZ.yr6J.ftWjIZuuMWkBOo3eGGF6aDjw.jp3CeSsOMM80q', 3, 1),
-(19, 'ANGELA', 'angela', '$2y$10$Yyseh07CBjrDrQKdtjqAwuYgCinigDyOUbsYCMpmA5aPuPiifjk9a', 2, 1);
+(19, 'ANGELA', 'angela', '$2y$10$Yyseh07CBjrDrQKdtjqAwuYgCinigDyOUbsYCMpmA5aPuPiifjk9a', 2, 0),
+(20, 'ANGELA', 'angela', '$2y$10$8AlTMW/EydmGckNVwlufz.U7m.SkZE3b8iNj1pCnqkCEO.TSnqqFK', 2, 1);
 
 --
 -- Índices para tablas volcadas
@@ -615,7 +651,8 @@ ALTER TABLE `cuarto_año`
   ADD KEY `alumno_id` (`alumno_id`),
   ADD KEY `aula_id` (`aula_id`),
   ADD KEY `periodo_id` (`periodo_id`),
-  ADD KEY `grupo_id` (`grupo_id`);
+  ADD KEY `grupo_id` (`grupo_id`),
+  ADD KEY `mencion_id` (`mencion_id`);
 
 --
 -- Indices de la tabla `datos_liceo`
@@ -639,7 +676,14 @@ ALTER TABLE `grupos`
 -- Indices de la tabla `materias`
 --
 ALTER TABLE `materias`
-  ADD PRIMARY KEY (`materia_id`);
+  ADD PRIMARY KEY (`materia_id`),
+  ADD KEY `mencion_id` (`mencion_id`);
+
+--
+-- Indices de la tabla `menciones`
+--
+ALTER TABLE `menciones`
+  ADD PRIMARY KEY (`mencion_id`);
 
 --
 -- Indices de la tabla `notas`
@@ -664,7 +708,8 @@ ALTER TABLE `primer_año`
   ADD KEY `alumno_id` (`alumno_id`),
   ADD KEY `aula_id` (`aula_id`),
   ADD KEY `periodo_id` (`periodo_id`),
-  ADD KEY `grupo_id` (`grupo_id`);
+  ADD KEY `grupo_id` (`grupo_id`),
+  ADD KEY `mencion_id` (`mencion_id`);
 
 --
 -- Indices de la tabla `profesor`
@@ -689,7 +734,8 @@ ALTER TABLE `quinto_año`
   ADD KEY `alumno_id` (`alumno_id`),
   ADD KEY `aula_id` (`aula_id`),
   ADD KEY `periodo_id` (`periodo_id`),
-  ADD KEY `grupo_id` (`grupo_id`);
+  ADD KEY `grupo_id` (`grupo_id`),
+  ADD KEY `mencion_id` (`mencion_id`);
 
 --
 -- Indices de la tabla `reportes`
@@ -711,7 +757,8 @@ ALTER TABLE `segundo_año`
   ADD KEY `alumno_id` (`alumno_id`),
   ADD KEY `aula_id` (`aula_id`),
   ADD KEY `periodo_id` (`periodo_id`),
-  ADD KEY `grupo_id` (`grupo_id`);
+  ADD KEY `grupo_id` (`grupo_id`),
+  ADD KEY `mencion_id` (`mencion_id`);
 
 --
 -- Indices de la tabla `tercer_año`
@@ -721,7 +768,8 @@ ALTER TABLE `tercer_año`
   ADD KEY `alumno_id` (`alumno_id`),
   ADD KEY `aula_id` (`aula_id`),
   ADD KEY `periodo_id` (`periodo_id`),
-  ADD KEY `grupo_id` (`grupo_id`);
+  ADD KEY `grupo_id` (`grupo_id`),
+  ADD KEY `mencion_id` (`mencion_id`);
 
 --
 -- Indices de la tabla `usuarios`
@@ -750,7 +798,7 @@ ALTER TABLE `aulas`
 -- AUTO_INCREMENT de la tabla `cuarto_año`
 --
 ALTER TABLE `cuarto_año`
-  MODIFY `cuarto_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `cuarto_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `datos_liceo`
@@ -774,7 +822,13 @@ ALTER TABLE `grupos`
 -- AUTO_INCREMENT de la tabla `materias`
 --
 ALTER TABLE `materias`
-  MODIFY `materia_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `materia_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+
+--
+-- AUTO_INCREMENT de la tabla `menciones`
+--
+ALTER TABLE `menciones`
+  MODIFY `mencion_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `notas`
@@ -792,7 +846,7 @@ ALTER TABLE `periodos`
 -- AUTO_INCREMENT de la tabla `primer_año`
 --
 ALTER TABLE `primer_año`
-  MODIFY `primero_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `primero_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `profesor`
@@ -810,7 +864,7 @@ ALTER TABLE `profesor_materias`
 -- AUTO_INCREMENT de la tabla `quinto_año`
 --
 ALTER TABLE `quinto_año`
-  MODIFY `quinto_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `quinto_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `reportes`
@@ -828,19 +882,19 @@ ALTER TABLE `rol`
 -- AUTO_INCREMENT de la tabla `segundo_año`
 --
 ALTER TABLE `segundo_año`
-  MODIFY `segundo_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `segundo_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `tercer_año`
 --
 ALTER TABLE `tercer_año`
-  MODIFY `tercer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `tercer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `usuario_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `usuario_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- Restricciones para tablas volcadas
@@ -853,7 +907,14 @@ ALTER TABLE `cuarto_año`
   ADD CONSTRAINT `cuarto_año_ibfk_1` FOREIGN KEY (`alumno_id`) REFERENCES `alumnos` (`alumno_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `cuarto_año_ibfk_2` FOREIGN KEY (`aula_id`) REFERENCES `aulas` (`aula_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `cuarto_año_ibfk_3` FOREIGN KEY (`periodo_id`) REFERENCES `periodos` (`periodo_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `cuarto_año_ibfk_4` FOREIGN KEY (`grupo_id`) REFERENCES `grupos` (`grupo_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `cuarto_año_ibfk_4` FOREIGN KEY (`grupo_id`) REFERENCES `grupos` (`grupo_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `cuarto_año_ibfk_5` FOREIGN KEY (`mencion_id`) REFERENCES `menciones` (`mencion_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `materias`
+--
+ALTER TABLE `materias`
+  ADD CONSTRAINT `materias_ibfk_1` FOREIGN KEY (`mencion_id`) REFERENCES `menciones` (`mencion_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `notas`
@@ -870,7 +931,8 @@ ALTER TABLE `primer_año`
   ADD CONSTRAINT `primer_año_ibfk_1` FOREIGN KEY (`alumno_id`) REFERENCES `alumnos` (`alumno_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `primer_año_ibfk_2` FOREIGN KEY (`aula_id`) REFERENCES `aulas` (`aula_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `primer_año_ibfk_3` FOREIGN KEY (`periodo_id`) REFERENCES `periodos` (`periodo_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `primer_año_ibfk_4` FOREIGN KEY (`grupo_id`) REFERENCES `grupos` (`grupo_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `primer_año_ibfk_4` FOREIGN KEY (`grupo_id`) REFERENCES `grupos` (`grupo_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `primer_año_ibfk_5` FOREIGN KEY (`mencion_id`) REFERENCES `menciones` (`mencion_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `profesor_materias`
@@ -887,7 +949,8 @@ ALTER TABLE `quinto_año`
   ADD CONSTRAINT `quinto_año_ibfk_1` FOREIGN KEY (`alumno_id`) REFERENCES `alumnos` (`alumno_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `quinto_año_ibfk_2` FOREIGN KEY (`aula_id`) REFERENCES `aulas` (`aula_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `quinto_año_ibfk_3` FOREIGN KEY (`periodo_id`) REFERENCES `periodos` (`periodo_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `quinto_año_ibfk_4` FOREIGN KEY (`grupo_id`) REFERENCES `grupos` (`grupo_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `quinto_año_ibfk_4` FOREIGN KEY (`grupo_id`) REFERENCES `grupos` (`grupo_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `quinto_año_ibfk_5` FOREIGN KEY (`mencion_id`) REFERENCES `menciones` (`mencion_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `segundo_año`
@@ -896,7 +959,8 @@ ALTER TABLE `segundo_año`
   ADD CONSTRAINT `segundo_año_ibfk_1` FOREIGN KEY (`alumno_id`) REFERENCES `alumnos` (`alumno_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `segundo_año_ibfk_2` FOREIGN KEY (`aula_id`) REFERENCES `aulas` (`aula_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `segundo_año_ibfk_3` FOREIGN KEY (`periodo_id`) REFERENCES `periodos` (`periodo_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `segundo_año_ibfk_4` FOREIGN KEY (`grupo_id`) REFERENCES `grupos` (`grupo_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `segundo_año_ibfk_4` FOREIGN KEY (`grupo_id`) REFERENCES `grupos` (`grupo_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `segundo_año_ibfk_5` FOREIGN KEY (`mencion_id`) REFERENCES `menciones` (`mencion_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `tercer_año`
@@ -905,7 +969,8 @@ ALTER TABLE `tercer_año`
   ADD CONSTRAINT `tercer_año_ibfk_1` FOREIGN KEY (`alumno_id`) REFERENCES `alumnos` (`alumno_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `tercer_año_ibfk_2` FOREIGN KEY (`aula_id`) REFERENCES `aulas` (`aula_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `tercer_año_ibfk_3` FOREIGN KEY (`periodo_id`) REFERENCES `periodos` (`periodo_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `tercer_año_ibfk_4` FOREIGN KEY (`grupo_id`) REFERENCES `grupos` (`grupo_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `tercer_año_ibfk_6` FOREIGN KEY (`grupo_id`) REFERENCES `grupos` (`grupo_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `tercer_año_ibfk_7` FOREIGN KEY (`mencion_id`) REFERENCES `menciones` (`mencion_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `usuarios`
