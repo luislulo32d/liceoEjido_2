@@ -4,7 +4,7 @@
     require_once '../includes/conexion.php';
     require_once 'includes/modals/modal_tercer_año.php';
 
-    $sql = "SELECT * FROM tercer_año as sg INNER JOIN alumnos as al ON sg.alumno_id = al.alumno_id INNER JOIN aulas as au ON sg.aula_id = au.aula_id INNER JOIN periodos as pe ON sg.periodo_id = pe.periodo_id  WHERE sg.statustr != 0 ORDER BY al.cedulaes";
+    $sql = "SELECT * FROM tercer_año as sg INNER JOIN alumnos as al ON sg.alumno_id = al.alumno_id INNER JOIN aulas as au ON sg.aula_id = au.aula_id INNER JOIN periodos as pe ON sg.periodo_id = pe.periodo_id INNER JOIN menciones as me ON sg.mencion_id = me.mencion_id WHERE sg.statustr != 0 ORDER BY al.cedulaes";
     $query = $pdo->prepare($sql);
     $query->execute();
     $row = $query->rowCount();
@@ -37,6 +37,7 @@
                       <th>APELLIDO DEL ALUMNO</th>
                       <th>NOMBRE DEL ALUMNO</th>
                       <th>SEXO</th>
+                      <th>MENCIÓN</th>
                       <th>ESTADO</th>
                     </tr>
                   </thead>
@@ -53,6 +54,7 @@
                         <td><?= $data['apellido_alumno'];?></td>
                         <td><?= $data['nombre_alumno'];?></td>
                         <td><?= $data['sexo'];?></td>
+                        <td><?= $data['mencion_nombre'];?></td>
                         <td><?php if($data['estado'] != 1){
                                     ?> <span class="badge badge-danger"><?php echo $data['nombre_periodo'];?> </span>
                             <?php } elseif($data['statustr'] == 1){

@@ -18,13 +18,13 @@ document.addEventListener('DOMContentLoaded',function(){
         var idnotas = document.querySelector('#idnotas').value;
         var idcursante = document.querySelector('#idcursante').value;
         var idcurso = document.querySelector('#idcurso').value;
+        var idmencion = document.querySelector('#idmencion').value;
         var listMateria = document.querySelector('#listMateria').value;
         var listPeriodo = document.querySelector('#listPeriodo').value;
         var nota1 = document.querySelector('#nota1').value;
         var nota2 = document.querySelector('#nota2').value;
         var nota3 = document.querySelector('#nota3').value;
         var estadonota = document.querySelector('#estadonota').value;
-        var momento_nota = document.querySelector('#momento_nota').value;
         
         
         if(listMateria == '' || listPeriodo == ''){
@@ -64,9 +64,10 @@ window.addEventListener('load',function(){
 
 },false)
 
-
+/*
 function showMateria() {
     var idcurso = document.querySelector('#idcurso').value;
+    var idmencion = document.querySelector('#idmencion').value;
     if(idcurso == 1) {
     var request = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
     var url = './models/options/options-materia1.php';
@@ -154,6 +155,7 @@ function showMateria() {
     }    
 }
 
+*/
 
 function editarNota(id) {
     var idnotas = id;
@@ -174,10 +176,6 @@ function editarNota(id) {
                     document.querySelector('#nota2').value = data.data.nota2;
                     document.querySelector('#nota3').value = data.data.nota3;
                     document.querySelector('#estadonota').value = data.data.estadonota;
-                    document.querySelector('#momento_nota').value = data.data.momento_nota;
-
-                    
-
                     
                     $('#modalNotas').modal('show');
                 } else {

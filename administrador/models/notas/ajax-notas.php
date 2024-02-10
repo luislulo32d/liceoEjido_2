@@ -24,11 +24,8 @@ if(!empty($_POST)) {
         $materia = $_POST['listMateria'];
         $periodo = $_POST['listPeriodo'];
         $estadonota = $_POST['estadonota'];
-        $momento_nota = $_POST['momento_nota'];
-        
-        
-        
 
+        //comprobante notas
         $sql = "SELECT * FROM notas WHERE nota_id != ? AND alumno_id = ? AND materia_id = ? AND periodo_id = ? AND curso = ?";
         $query = $pdo->prepare($sql);
         $query->execute(array($idnotas,$idcursante,$materia,$periodo,$idcurso));
@@ -38,14 +35,14 @@ if(!empty($_POST)) {
             $respuesta = array('status' => false,'msg' => 'Error, la materia seleccionada ya existe para este estudiante en el periodo elegido.');
         } else {
             if($idnotas == 0){
-                $sqlInsert = "INSERT INTO notas (alumno_id,materia_id,periodo_id,nota1,nota2,nota3,promedio,curso,estadonota,momento_nota) VALUES (?,?,?,?,?,?,?,?,?,?)";
+                $sqlInsert = "INSERT INTO notas (alumno_id,materia_id,periodo_id,nota1,nota2,nota3,promedio,curso,estadonota) VALUES (?,?,?,?,?,?,?,?,?)";
                 $queryInsert = $pdo->prepare($sqlInsert);
-                $request = $queryInsert->execute(array($idcursante,$materia,$periodo,$nota1,$nota2,$nota3,$promedio,$idcurso,$estadonota,$momento_nota));
+                $request = $queryInsert->execute(array($idcursante,$materia,$periodo,$nota1,$nota2,$nota3,$promedio,$idcurso,$estadonota));
                 $accion = 1;
             } else {
-                    $sqlUpdate = 'UPDATE notas SET alumno_id = ?,materia_id = ?,periodo_id = ?,nota1 = ?,nota2 = ?,nota3 = ?,promedio = ?,curso = ?,estadonota = ?,momento_nota = ? WHERE nota_id = ?';
+                    $sqlUpdate = 'UPDATE notas SET alumno_id = ?,materia_id = ?,periodo_id = ?,nota1 = ?,nota2 = ?,nota3 = ?,promedio = ?,curso = ?,estadonota = ? WHERE nota_id = ?';
                     $queryUpdate = $pdo->prepare($sqlUpdate);
-                    $request = $queryUpdate->execute(array($idcursante,$materia,$periodo,$nota1,$nota2,$nota3,$promedio,$idcurso,$estadonota,$momento_nota,$idnotas));
+                    $request = $queryUpdate->execute(array($idcursante,$materia,$periodo,$nota1,$nota2,$nota3,$promedio,$idcurso,$estadonota,$idnotas));
                     $accion = 2;
             }
             

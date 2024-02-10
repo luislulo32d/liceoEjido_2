@@ -1,11 +1,13 @@
 <?php
-    if(!empty($_GET['seccion']) ||!empty($_GET['curso']) ||!empty($_GET['cursante']) ||!empty($_GET['cedu']) || !empty($_GET['nombrestu']) || !empty($_GET['apellistu']) || !empty($_GET['nacionstu']) || !empty($_GET['fecnac']) || !empty($_GET['feces']) || !empty($_GET['nomsecci']) || !empty($_GET['numelis']) || !empty($_GET['elPerio'])) {
+    if(!empty($_GET['seccion']) ||!empty($_GET['curso']) ||!empty($_GET['cursante']) ||!empty($_GET['cedu']) || !empty($_GET['nombrestu']) || !empty($_GET['apellistu']) || !empty($_GET['mencion']) || !empty($_GET['mencion_nomb']) || !empty($_GET['nacionstu']) || !empty($_GET['fecnac']) || !empty($_GET['feces']) || !empty($_GET['nomsecci']) || !empty($_GET['numelis']) || !empty($_GET['elPerio'])) {
         $seccion = $_GET['seccion'];
         $curso = $_GET['curso'];
         $cursante = $_GET['cursante'];
         $cedu = $_GET['cedu'];
         $nombrestu = $_GET['nombrestu'];
         $apellistu = $_GET['apellistu'];
+        $mencion = $_GET['mencion'];
+        $mencion_nomb = $_GET['mencion_nomb'];
         $nacionalidad = $_GET['nacionstu'];
         $fechaNacimiento = $_GET['fecnac'];
         $fechaEscolar = $_GET['feces'];
@@ -31,7 +33,7 @@
       $año = 'Quinto Año';
     }
 
-    $sql = "SELECT * FROM notas as nt INNER JOIN alumnos as al ON nt.alumno_id = al.alumno_id INNER JOIN periodos as pe ON nt.periodo_id = pe.periodo_id INNER JOIN materias as ri ON nt.materia_id = ri.materia_id WHERE al.alumno_id = $cursante AND nt.curso = $curso AND pe.periodo_id = $elPeriodo";
+    $sql = "SELECT * FROM notas as nt INNER JOIN alumnos as al ON nt.alumno_id = al.alumno_id INNER JOIN periodos as pe ON nt.periodo_id = pe.periodo_id INNER JOIN materias as ri ON nt.materia_id = ri.materia_id INNER JOIN menciones as me ON ri.mencion_id = me.mencion_id WHERE al.alumno_id = $cursante AND nt.curso = $curso AND pe.periodo_id = $elPeriodo ORDER BY ri.mencion_id";
     $query = $pdo->prepare($sql);
     $query->execute();
     $row = $query->rowCount();
@@ -41,7 +43,7 @@
 <main class="app-content">
       <div class="app-title">
         <div>
-            <h1><i class="fa fa-dashboard"></i> Lista De Notas De <?= $año; ?> <br> Estudiante: <?= $apellistu;?>  <?= $nombrestu;?> (CI: <?= $nacionalidad;?> <?= $cedu; ?>)  <br> Periodo escolar : <?= $fechaEscolar;?> </h1>
+            <h1><i class="fa fa-dashboard"></i>Lista De Notas De <?= $año; ?> <br> Estudiante: <?= $apellistu;?>  <?= $nombrestu;?> (CI: <?= $nacionalidad;?> <?= $cedu; ?>)  <br> Mención : <?= $mencion_nomb;?> <br> Periodo escolar : <?= $fechaEscolar;?> </h1>
             <button class="btn btn-info" type="button" onclick="openModalNota()">Nueva Nota</button>
             <a href="boletin.php?seccion=<?= $seccion;?>&curso=<?= $curso;?>&cursante=<?= $cursante;?>&cedu=<?= $cedu;?>&nombrestu=<?= $nombrestu;?>&apellistu=<?= $apellistu;?>&nacionalidad=<?= $nacionalidad;?>&fechaNac=<?= $fechaNacimiento;?>&fechaEsc=<?= $fechaEscolar;?>&nombreSec=<?= $nombreSeccion;?>&numelist=<?= $numeroLista;?>&elPerio=<?= $elPeriodo;?>" class="btn btn-secondary ">Generar Boletin Academico</a>
 
@@ -60,13 +62,13 @@
                   <thead>
                     <tr>
                       <th>ACCIONES</th>
-                      <th>ASIGNATURAS</th>
+                      <th>ASIGNATURA</th>
                       <th>1º PERIODO</th>
                       <th>2º PERIODO</th>
                       <th>3º PERIODO</th>
                       <th>FINAL</th>
                       <th>TIPO DE NOTA</th>
-                      <th>MOMENTO</th>
+                      <th>MENCIÓN</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -141,15 +143,7 @@
                         </td>
 
                         <td>
-                            <?php
-                              if ($data['estadonota']==3) {
-                                echo $data['momento_nota'];
-                              }else {
-                                echo " ";
-                              }
-                            ?>
-
-
+                          <?= $data['mencion_nombre']?>
                         </td>
                       </tr>
 

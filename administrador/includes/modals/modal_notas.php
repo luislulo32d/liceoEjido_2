@@ -18,15 +18,38 @@
         <input type="hidden" name="idcursante" id="idcursante" value="<?php echo $cursante; ?>">
 
         <input type="hidden" name="idcurso" id="idcurso" value="<?php echo $curso; ?>">
+        <input type="hidden" name="idmencion" id="idmencion" value="<?php echo $mencion; ?>">
 
-
+          <!--
           <div class="form-group">
             <label for="listMateria">Seleccione la materia</label>
             <select class="form-control" name="listMateria" id="listMateria">
-                <!-- CONTENIDO AJAX -->
+              
             </select>         
           </div>
-          
+            -->
+
+            <div class="form-group">
+                <label for="listMateria">Seleccione la materia</label>
+                <select class="form-control" name="listMateria" id="listMateria">
+                    <!-- CONSULTA MYSQL -->
+                    <?php 
+
+                        $sql = "SELECT * FROM materias WHERE  año_seleccion = $curso AND estado = 1 AND ( mencion_id = 1 OR mencion_id = $mencion ) ORDER BY mencion_id";
+                        $query = $pdo->prepare($sql);
+                        $query->execute();
+                        $row = $query->rowCount();
+
+                        if ($row > 0) {
+                            while($data = $query->fetch()) {?>
+                            <option value="<?php echo $data['materia_id'];?>"><?php echo $data['nombre_materia'];?></option>
+                        <?php
+                        }}
+                    ?>
+
+                </select>         
+              </div>
+
           <div class="form-group">
             <label for="listPeriodo">Seleccione el Periodo</label>
             <select class="form-control" name="listPeriodo" id="listPeriodo">
@@ -122,14 +145,6 @@
                 <option value="4">REPITENTE</option>
                 <option value="3">MATERIA PENDIENTE</option>
                 <option value="0">EN OTRA INSTITUCIÓN</option>
-            </select>         
-          </div>
-          <div class="form-group">
-            <label for="momento_nota">Momento (solo en caso de ser materia pendiente)</label>
-            <select class="form-control" name="momento_nota" id="momento_nota">
-                <option value="1">Momento 1</option>
-                <option value="2">Momento 2</option>
-                <option value="3">Momento 3</option>
             </select>         
           </div>
           <div class="modal-footer">

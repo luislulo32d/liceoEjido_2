@@ -9,7 +9,7 @@
     require_once '../includes/conexion.php';
     require_once 'includes/modals/modal_tercer_año.php';
 
-    $sql = "SELECT * FROM tercer_año as sg INNER JOIN alumnos as al ON sg.alumno_id = al.alumno_id INNER JOIN aulas as au ON sg.aula_id = au.aula_id INNER JOIN periodos as pe ON sg.periodo_id = pe.periodo_id  WHERE sg.statustr != 0 AND sg.aula_id = $seccion ORDER BY al.cedulaes";
+    $sql = "SELECT * FROM tercer_año as sg INNER JOIN alumnos as al ON sg.alumno_id = al.alumno_id INNER JOIN aulas as au ON sg.aula_id = au.aula_id INNER JOIN periodos as pe ON sg.periodo_id = pe.periodo_id INNER JOIN menciones as me ON sg.mencion_id = me.mencion_id WHERE sg.statustr != 0 AND sg.aula_id = $seccion ORDER BY al.cedulaes";
     $query = $pdo->prepare($sql);
     $query->execute();
     $row = $query->rowCount();
@@ -44,13 +44,16 @@
                       <th>APELLIDO DEL ALUMNO</th>
                       <th>NOMBRE DEL ALUMNO</th>
                       <th>SEXO</th>
+                      <th>MENCIÓN</th>
                       <th>ESTADO</th>
                     </tr>
                   </thead>
                   <tbody>
                   <?php
                       if ($row > 0) {
+                        $numerolista = 0;
                         while($data = $query->fetch()) {
+                        $numerolista++;
                         $nacimientofe = date("d-m-Y", strtotime($data['fecha_nac']));
                     ?>
                       <tr>
@@ -59,22 +62,23 @@
                             $data['acciones'] = '
                             <button class="btn btn-primary btn-sm" title="Editar" onclick="editarTercerAño('.$data['tercer_id'].')">Editar</button>
                             <button class="btn btn-danger btn-sm" title="Eliminar" onclick="eliminarTercerAño('.$data['tercer_id'].')">Eliminar</button>
-                            <a href="lista_notas.php?seccion='.$seccion.'&curso=3&cursante='.$data['alumno_id'].'&cedu='.$data['cedulaes'].'&nombrestu='.$data['nombre_alumno'].'&apellistu='.$data['apellido_alumno'].'&nacionstu='.$data['nacionalidad'].'&fecnac='.$nacimientofe.'&feces='.$data['nombre_periodo'].'&nomsecci='.$nombreSeccion.'&numelis='.$data['numero_lista'].'&elPerio='.$data['periodo_id'].'" class="btn btn-info btn-sm">Ver Notas</a>
+                            <a href="lista_notas.php?seccion='.$seccion.'&curso=3&cursante='.$data['alumno_id'].'&cedu='.$data['cedulaes'].'&nombrestu='.$data['nombre_alumno'].'&apellistu='.$data['apellido_alumno'].'&mencion='.$data['mencion_id'].'&mencion_nomb='.$data['mencion_nombre'].'&nacionstu='.$data['nacionalidad'].'&fecnac='.$nacimientofe.'&feces='.$data['nombre_periodo'].'&nomsecci='.$nombreSeccion.'&numelis='.$numerolista.'&elPerio='.$data['periodo_id'].'" class="btn btn-info btn-sm">Ver Notas</a>
 
                                                 ';
                         }elseif ($privilegios == 2){
                           $data['acciones'] = '
-                          <a href="lista_notas.php?seccion='.$seccion.'&curso=3&cursante='.$data['alumno_id'].'&cedu='.$data['cedulaes'].'&nombrestu='.$data['nombre_alumno'].'&apellistu='.$data['apellido_alumno'].'&nacionstu='.$data['nacionalidad'].'&fecnac='.$nacimientofe.'&feces='.$data['nombre_periodo'].'&nomsecci='.$nombreSeccion.'&numelis='.$data['numero_lista'].'&elPerio='.$data['periodo_id'].'" class="btn btn-info btn-sm">Ver Notas</a>
+                          <a href="lista_notas.php?seccion='.$seccion.'&curso=3&cursante='.$data['alumno_id'].'&cedu='.$data['cedulaes'].'&nombrestu='.$data['nombre_alumno'].'&apellistu='.$data['apellido_alumno'].'&mencion='.$data['mencion_id'].'&mencion_nomb='.$data['mencion_nombre'].'&nacionstu='.$data['nacionalidad'].'&fecnac='.$nacimientofe.'&feces='.$data['nombre_periodo'].'&nomsecci='.$nombreSeccion.'&numelis='.$numerolista.'&elPerio='.$data['periodo_id'].'" class="btn btn-info btn-sm">Ver Notas</a>
                                               ';
                         }
                         echo $data['acciones'];
                         ?></td>
-                        <td><?= $data['numero_lista']; ?></td>
+                        <td><?= $numerolista; ?></td>
                         <td><?= $data['cedu_estudiantil'];?></td>
                         <td><?= $data['nacionalidad'], $data['cedulaes']; ?></td>
                         <td><?= $data['apellido_alumno'];?></td>
                         <td><?= $data['nombre_alumno'];?></td>
                         <td><?= $data['sexo'];?></td>
+                        <td><?= $data['mencion_nombre'];?></td>
                         <td><?php if($data['estado'] != 1){
                                     ?> <span class="badge badge-danger"><?php echo $data['nombre_periodo'];?> </span>
                             <?php } elseif($data['statustr'] == 1){

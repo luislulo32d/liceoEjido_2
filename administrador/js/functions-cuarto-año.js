@@ -54,11 +54,11 @@ document.addEventListener('DOMContentLoaded',function(){
         var listEstudiante = document.querySelector('#listEstudiante').value;
         var listAula = document.querySelector('#listAula').value;
         var listPeriodo = document.querySelector('#listPeriodo').value;
-        var listNumero = document.querySelector('#listNumero').value;
+        var listMencion = document.querySelector('#listMencion').value;
         var listGrupos = document.querySelector('#listGrupos').value;
         var listEstado = document.querySelector('#listEstado').value;
         
-        if(listEstudiante == '' || listAula == '' || listPeriodo == ''){
+        if(listEstudiante == '' || listAula == '' || listPeriodo == '' ||listMencion == ''){
             swal('Atencion','Todos los campos son necesarios','error');
             return false;
         }
@@ -113,7 +113,7 @@ function editarCuartoAño(id) {
                     document.querySelector('#listEstudiante').value = data.data.alumno_id;
                     document.querySelector('#listAula').value = data.data.aula_id;
                     document.querySelector('#listPeriodo').value = data.data.periodo_id;
-                    document.querySelector('#listNumero').value = data.data.numero_lista;
+                    document.querySelector('#listMencion').value = data.data.listMencion;
                     document.querySelector('#listGrupos').value = data.data.grupo_id;
                     document.querySelector('#listEstado').value = data.data.statuscr;
                     
