@@ -45,7 +45,7 @@
         <div>
             <h1><i class="fa fa-dashboard"></i>Lista De Notas De <?= $año; ?> <br> Estudiante: <?= $apellistu;?>  <?= $nombrestu;?> (CI: <?= $nacionalidad;?> <?= $cedu; ?>)  <br> Mención : <?= $mencion_nomb;?> <br> Periodo escolar : <?= $fechaEscolar;?> </h1>
             <button class="btn btn-info" type="button" onclick="openModalNota()">Nueva Nota</button>
-            <a href="boletin.php?seccion=<?= $seccion;?>&curso=<?= $curso;?>&cursante=<?= $cursante;?>&cedu=<?= $cedu;?>&nombrestu=<?= $nombrestu;?>&apellistu=<?= $apellistu;?>&nacionalidad=<?= $nacionalidad;?>&fechaNac=<?= $fechaNacimiento;?>&fechaEsc=<?= $fechaEscolar;?>&nombreSec=<?= $nombreSeccion;?>&numelist=<?= $numeroLista;?>&elPerio=<?= $elPeriodo;?>" class="btn btn-secondary ">Generar Boletin Academico</a>
+            <a href="boletin.php?seccion=<?= $seccion;?>&curso=<?= $curso;?>&cursante=<?= $cursante;?>&cedu=<?= $cedu;?>&nombrestu=<?= $nombrestu;?>&apellistu=<?= $apellistu;?>&nacionalidad=<?= $nacionalidad;?>&fechaNac=<?= $fechaNacimiento;?>&fechaEsc=<?= $fechaEscolar;?>&nombreSec=<?= $nombreSeccion;?>&numelist=<?= $numeroLista;?>&mencion=<?= $mencion;?>&mencion_nombre=<?= $mencion_nomb;?>&elPerio=<?= $elPeriodo;?>" class="btn btn-secondary ">Generar Boletin Academico</a>
 
         </div>
         <ul class="app-breadcrumb breadcrumb">

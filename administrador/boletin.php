@@ -36,7 +36,6 @@
     }
     require_once 'includes/header.php';
     require_once '../includes/conexion.php';
-    require_once 'includes/modals/modal_notas.php';
     if ($curso == 1){
       $año = 'Primer Año';
       $grado = '1RO';

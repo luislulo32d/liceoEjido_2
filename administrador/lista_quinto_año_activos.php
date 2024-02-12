@@ -64,12 +64,12 @@
                             $data['acciones'] = '
                             <button class="btn btn-primary btn-sm" title="Editar" onclick="editarQuintoAño('.$data['quinto_id'].')">Editar</button>
                             <button class="btn btn-danger btn-sm" title="Eliminar" onclick="eliminarQuintoAño('.$data['quinto_id'].')">Eliminar</button>
-                            <a href="lista_notas.php?seccion='.$seccion.'&curso=5&cursante='.$data['alumno_id'].'&cedu='.$data['cedulaes'].'&nombrestu='.$data['nombre_alumno'].'&apellistu='.$data['apellido_alumno'].'&nacionstu='.$data['nacionalidad'].'&fecnac='.$nacimientofe.'&feces='.$data['nombre_periodo'].'&nomsecci='.$nombreSeccion.'&numelis='.$numerolista.'&elPerio='.$data['periodo_id'].'" class="btn btn-info btn-sm">Ver Notas</a>
+                            <a href="lista_notas.php?seccion='.$seccion.'&curso=5&cursante='.$data['alumno_id'].'&cedu='.$data['cedulaes'].'&nombrestu='.$data['nombre_alumno'].'&apellistu='.$data['apellido_alumno'].'&mencion='.$data['mencion_id'].'&mencion_nomb='.$data['mencion_nombre'].'&nacionstu='.$data['nacionalidad'].'&fecnac='.$nacimientofe.'&feces='.$data['nombre_periodo'].'&nomsecci='.$nombreSeccion.'&numelis='.$numerolista.'&elPerio='.$data['periodo_id'].'" class="btn btn-info btn-sm">Ver Notas</a>
                                                 ';
                         }elseif ($privilegios == 2){
                           $data['acciones'] = '
                           <button class="btn btn-primary btn-sm" title="Editar" onclick="editarQuintoAño('.$data['quinto_id'].')">Editar</button>
-                          <a href="lista_notas.php?seccion='.$seccion.'&curso=5&cursante='.$data['alumno_id'].'&cedu='.$data['cedulaes'].'&nombrestu='.$data['nombre_alumno'].'&apellistu='.$data['apellido_alumno'].'&nacionstu='.$data['nacionalidad'].'&fecnac='.$nacimientofe.'&feces='.$data['nombre_periodo'].'&nomsecci='.$nombreSeccion.'&numelis='.$numerolista.'&elPerio='.$data['periodo_id'].'" class="btn btn-info btn-sm">Ver Notas</a>
+                          <a href="lista_notas.php?seccion='.$seccion.'&curso=5&cursante='.$data['alumno_id'].'&cedu='.$data['cedulaes'].'&nombrestu='.$data['nombre_alumno'].'&apellistu='.$data['apellido_alumno'].'&mencion='.$data['mencion_id'].'&mencion_nomb='.$data['mencion_nombre'].'&nacionstu='.$data['nacionalidad'].'&fecnac='.$nacimientofe.'&feces='.$data['nombre_periodo'].'&nomsecci='.$nombreSeccion.'&numelis='.$numerolista.'&elPerio='.$data['periodo_id'].'" class="btn btn-info btn-sm">Ver Notas</a>
                                               ';
                         }
                         echo $data['acciones'];
