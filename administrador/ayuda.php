@@ -5,7 +5,7 @@ require_once 'includes/header.php';
 <main class="app-content">
   <div class="row">
       <div class="col-md-12 border shadow p-2 bg-light text-info">
-        <h3 class="display-4 text-center">SISTEMA ESCOLAR - LICEO BOLIVARIANO EJIDO <br> SECCIÓN DE AYUDA</h3>
+        <h3 class="display-4 text-center">SISTEMA ESCOLAR - LICEO ALI RODRÍGUEZ ARAQUE  <br> SECCIÓN DE AYUDA</h3>
       </div>
   </div>
   

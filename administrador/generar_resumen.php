@@ -236,7 +236,7 @@
                 $columnaLetra2 = chr($iz);
                 $hojaActiva->mergeCells(''.$columnaLetra.''.$filaNumero.':'.$columnaLetra2.''.$filaNumero.'');
                 $hojaActiva->getStyle(''.$columnaLetra.''.$filaNumero.':'.$columnaLetra2.''.$filaNumero.'')->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER);
-                $hojaActiva->setCellValue(''.$columnaLetra.''.$filaNumero.'', 'Nombre: LICEO BOLIVARIANO EJIDO');
+                $hojaActiva->setCellValue(''.$columnaLetra.''.$filaNumero.'', 'Nombre: LICEO ALI RODRÍGUEZ ARAQUE');
 
 
                 $filaNumero++;

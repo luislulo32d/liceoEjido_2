@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <title>INGRESO LICEO BOLIVARIANO EJIDO</title>
+    <title>SISTEMA ESCOLAR - INGRESO</title>
 </head>
 <body>
 <img class="wave" src="images/wave.png">

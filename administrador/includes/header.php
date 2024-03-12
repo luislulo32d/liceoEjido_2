@@ -8,7 +8,7 @@
 <html lang="en">
   <head>
     <meta name="description" content="Sistema de control de notas">
-    <title>LICEO BOLIVARIANO EJIDO - CONTROL DE NOTAS</title>
+    <title>SISTEMA ESCOLAR - CONTROL DE NOTAS</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">

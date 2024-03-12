@@ -61,7 +61,7 @@
 <main class="app-content">
   <div class="row">
       <div class="col-md-12 border shadow p-2 bg-info text-white">
-        <h3 class="display-4 text-center">SISTEMA ESCOLAR - LICEO BOLIVARIANO EJIDO</h3>
+        <h3 class="display-4 text-center">SISTEMA ESCOLAR - LICEO ALI RODRÍGUEZ ARAQUE</h3>
       </div>
   </div>
   <div class="row">
