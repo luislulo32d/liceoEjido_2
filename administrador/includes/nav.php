@@ -79,7 +79,7 @@
           </ul>
       </li>
       
-      <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-newspaper"></i><span class="app-menu__label">Generar N. Certificadas</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+      <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-certificate"></i><span class="app-menu__label">Generar N. Certificadas</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
           <li><a class="app-menu__item" href="lista_notas_certificadas.php?anio=1"><i class="app-menu__icon fa fa-file-excel"></i><span class="app-menu__label">N. C. 1ero</span></a></li>
           <li><a class="app-menu__item" href="lista_notas_certificadas.php?anio=2"><i class="app-menu__icon fa fa-file-excel"></i><span class="app-menu__label">N. C. 2do</span></a></li>
@@ -100,7 +100,7 @@
       <?php }
       ?>
       
-      <li><a class="app-menu__item" href="ayuda.php"><i class="app-menu__icon fa fa-power-off"></i><span class="app-menu__label">Ayuda</span></a></li>
+      <li><a class="app-menu__item" href="ayuda.php"><i class="app-menu__icon fa fa-book"></i><span class="app-menu__label">Ayuda</span></a></li>
       <li><a class="app-menu__item" href="../logout.php"><i class="app-menu__icon fa fa-power-off"></i><span class="app-menu__label">Logout</span></a></li>
       </ul>
     </aside>
